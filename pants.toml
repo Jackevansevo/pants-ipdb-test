@@ -1,0 +1,25 @@
+[GLOBAL]
+pants_version = "2.17.0"
+backend_packages = [
+  "pants.backend.python",
+]
+
+[python]
+interpreter_constraints = ['==3.11.*']
+enable_resolves = true
+
+[pytest]
+install_from_resolve = "python-default"
+requirements = [
+  "//:reqs0#pytest",
+  "//:reqs0#ipdb",
+]
+
+
+[python-infer]
+use_rust_parser = true
+string_imports = true
+string_imports_min_dots = 1
+
+[test]
+extra_env_vars = ["PYTHONBREAKPOINT=ipdb.set_trace"]
